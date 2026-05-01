@@ -3621,9 +3621,7 @@ section { padding: 7rem 0; position: relative; overflow: hidden; }
 
 /* Desktop spacing from right edge */
 @media (min-width: 993px) {
-  .nav-actions {
-    margin-right: 40px;
-  }
+ .nav-actions { margin-left: auto; }
 }
 
 /* Mobile adjustment */

@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NexaVision – Digital Marketing Agency</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" />
+
+  <!-- AOS Animation Library -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ====== PRELOADER ====== -->
+  <div id="preloader">
+    <div class="loader-ring">
+      <div></div><div></div><div></div><div></div>
+    </div>
+    <p class="loader-text">NexaVision</p>
+  </div>
+
+  <!-- ====== CURSOR ====== -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-circle"></div>
+
+  <!-- ====== PARTICLES CANVAS ====== -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- ====== NAVIGATION ====== -->
+<div class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo-link">
+      <div class="logo">
+        <i class="fas fa-cube"></i>
+        <span class="nexa-white">Nexa</span><span class="vision-purple">Vision</span>
+      </div>
+    </a>
+         <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    <div class="nav-actions">
+      <a href="contact.html#contact-form" class="btn-primary-nav">Start Project <i class="fa-solid fa-arrow-right"></i></a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</div>
+  <!-- ====== HERO SECTION ====== -->
+  <section id="home" class="hero-section">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="hero-orb orb-3"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge" data-aos="fade-down" data-aos-delay="100">
+        <i class="fa-solid fa-star"></i> Award-Winning Digital Agency
+      </div>
+      <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">
+        We Grow Your<br />
+        <span class="gradient-text typewriter-wrap">
+          <span id="typewriter"></span><span class="cursor-blink">|</span>
+        </span>
+        <br />Business Online
+      </h1>
+      <p class="hero-description" data-aos="fade-up" data-aos-delay="350">
+        NexaVision is a premium digital marketing agency delivering cutting-edge strategies,
+        creative content, and data-driven growth solutions that transform your brand's
+        online presence into measurable results.
+      </p>
+      <div class="hero-actions" data-aos="fade-up" data-aos-delay="450">
+        <a href="services.html" class="btn-hero-primary">
+          Explore Services <i class="fa-solid fa-rocket"></i>
+        </a>
+        <a href="portfolio.html" class="btn-hero-secondary">
+          <span class="play-icon"><i class="fa-solid fa-play"></i></span>
+          View Our Work
+        </a>
+      </div>
+      <div class="hero-stats" data-aos="fade-up" data-aos-delay="550">
+        <div class="stat-item">
+          <span class="stat-number" data-count="500">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">Clients Served</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="98">0</span><span class="stat-plus">%</span>
+          <span class="stat-label">Client Retention</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="8">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="150">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">Projects Done</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3D Floating Cards -->
+    <div class="hero-visual" data-aos="fade-left" data-aos-delay="300">
+      <div class="floating-card card-1">
+        <i class="fa-brands fa-google"></i>
+        <span>SEO Growth +340%</span>
+      </div>
+      <div class="floating-card card-2">
+        <i class="fa-solid fa-chart-line"></i>
+        <span>ROI Increase</span>
+      </div>
+      <div class="floating-card card-3">
+        <i class="fa-brands fa-instagram"></i>
+        <span>Social Reach ×5</span>
+      </div>
+      <div class="hero-3d-box">
+        <div class="cube-wrapper">
+          <div class="cube">
+            <div class="cube-face front"><i class="fa-solid fa-globe"></i></div>
+            <div class="cube-face back"><i class="fa-solid fa-bullseye"></i></div>
+            <div class="cube-face left"><i class="fa-solid fa-chart-bar"></i></div>
+            <div class="cube-face right"><i class="fa-solid fa-pen-nib"></i></div>
+            <div class="cube-face top"><i class="fa-solid fa-rocket"></i></div>
+            <div class="cube-face bottom"><i class="fa-solid fa-star"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="700">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span>Scroll Down</span>
+    </div>
+  </section>
+
+  <!-- ====== MARQUEE STRIP ====== -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span><i class="fa-solid fa-circle-check"></i> Website Development</span>
+      <span><i class="fa-solid fa-circle-check"></i> Social Media Marketing</span>
+      <span><i class="fa-solid fa-circle-check"></i> SEO Optimization</span>
+      <span><i class="fa-solid fa-circle-check"></i> Content Writing</span>
+      <span><i class="fa-solid fa-circle-check"></i> E-commerce Stores</span>
+      <span><i class="fa-solid fa-circle-check"></i> Support Services</span>
+      <span><i class="fa-solid fa-circle-check"></i> Outsourcing</span>
+      <!-- Duplicate for seamless loop -->
+      <span><i class="fa-solid fa-circle-check"></i> Website Development</span>
+      <span><i class="fa-solid fa-circle-check"></i> Social Media Marketing</span>
+      <span><i class="fa-solid fa-circle-check"></i> SEO Optimization</span>
+      <span><i class="fa-solid fa-circle-check"></i> Content Writing</span>
+      <span><i class="fa-solid fa-circle-check"></i> E-commerce Stores</span>
+      <span><i class="fa-solid fa-circle-check"></i> Support Services</span>
+      <span><i class="fa-solid fa-circle-check"></i> Outsourcing</span>
+    </div>
+  </div>
+
+  <!-- ====== ABOUT SECTION ====== -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual" data-aos="fade-right">
+          <div class="about-img-wrapper">
+            <div class="about-img-bg"></div>
+            <div class="about-img-card">
+              <div class="about-img-inner">
+                <div class="about-icon-grid">
+                  <div class="about-icon-cell"><i class="fa-brands fa-react"></i></div>
+                  <div class="about-icon-cell"><i class="fa-brands fa-node-js"></i></div>
+               <div class="about-icon-cell">
+  <svg width="28" height="28" viewBox="0 0 48 48">
+    
+    <!-- Red -->
+    <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.68 2.5 30.23 0 24 0 14.82 0 6.73 5.48 2.69 13.44l7.98 6.2C12.64 13.44 17.83 9.5 24 9.5z"/>
+    
+    <!-- Green -->
+    <path fill="#34A853" d="M46.5 24c0-1.64-.15-3.21-.42-4.73H24v9h12.7c-.55 2.96-2.2 5.48-4.68 7.17l7.2 5.6C43.94 36.96 46.5 30.96 46.5 24z"/>
+    
+    <!-- Yellow -->
+    <path fill="#FBBC05" d="M10.67 28.27a14.5 14.5 0 010-8.54l-7.98-6.2A24 24 0 000 24c0 3.9.93 7.6 2.69 10.47l7.98-6.2z"/>
+    
+    <!-- 🔵 ONLY BLUE -->
+    <path fill="#4285F4" d="M24 48c6.23 0 11.68-2.06 15.58-5.61l-7.2-5.6c-2 1.34-4.55 2.13-8.38 2.13-6.17 0-11.36-3.94-13.33-9.44l-7.98 6.2C6.73 42.52 14.82 48 24 48z"/>
+    
+  </svg>
+</div>
+                  <div class="about-icon-cell"><i class="fa-brands fa-facebook"></i></div>
+                  <div class="about-icon-cell main-cell"><i class="fa-solid fa-hexagon-nodes"></i></div>
+                  <div class="about-icon-cell"><i class="fa-brands fa-instagram"></i></div>
+                  <div class="about-icon-cell"><i class="fa-brands fa-shopify"></i></div>
+                  <div class="about-icon-cell"><i class="fa-brands fa-wordpress"></i></div>
+                  <div class="about-icon-cell"><i class="fa-brands fa-youtube"></i></div>
+                </div>
+              </div>
+            </div>
+            <div class="about-badge-float badge-1">
+              <i class="fa-solid fa-trophy"></i>
+              <div>
+                <strong>#1 Agency</strong>
+                <small>2024 Award</small>
+              </div>
+            </div>
+            <div class="about-badge-float badge-2">
+              <i class="fa-solid fa-users"></i>
+              <div>
+                <strong>500+ Clients</strong>
+                <small>Worldwide</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-text" data-aos="fade-left">
+          <div class="section-tag">Who We Are</div>
+          <h2 class="section-title">Transforming Brands with <span class="gradient-text">Digital Excellence</span></h2>
+          <p class="about-desc">We are a team of passionate digital strategists, designers, and developers who live and breathe digital marketing. With 8+ years of proven excellence, we help businesses of all sizes grow their online presence and achieve measurable ROI.</p>
+          <div class="about-features">
+            <div class="about-feature">
+              <div class="feature-icon"><i class="fa-solid fa-check"></i></div>
+              <div>
+                <strong>Data-Driven Strategy</strong>
+                <p>Every decision backed by analytics and market research</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="feature-icon"><i class="fa-solid fa-check"></i></div>
+              <div>
+                <strong>Creative Excellence</strong>
+                <p>Award-winning designs that captivate and convert</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="feature-icon"><i class="fa-solid fa-check"></i></div>
+              <div>
+                <strong>Proven Results</strong>
+                <p>98% client retention with measurable growth metrics</p>
+              </div>
+            </div>
+          </div>
+
+   <div class="about-team-preview">
+            <div class="team-avatars">
+              <img src="https://i.pravatar.cc/40?img=1" alt="Team member" />
+              <img src="https://i.pravatar.cc/40?img=5" alt="Team member" />
+              <img src="https://i.pravatar.cc/40?img=8" alt="Team member" />
+              <img src="https://i.pravatar.cc/40?img=12" alt="Team member" />
+              <span class="more-team">+24</span>
+            </div>
+            <span>Meet our expert team of 28+ specialists</span>
+          </div>
+          <a href="contact.html#contact-form" class="btn-primary">Work With Us <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SERVICES SECTION ====== -->
+  <section id="services" class="services-section">
+    <div class="services-bg-orb"></div>
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">What We Offer</div>
+        <h2 class="section-title">Our Premium <span class="gradient-text">Services</span></h2>
+        <p class="section-desc">Comprehensive digital solutions tailored to accelerate your business growth and dominate your market.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <!-- Service 1: Website Development -->
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100" data-tilt>
+          <div class="service-card-inner">
+            <div class="service-icon-wrapper">
+              <div class="service-icon">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <div class="service-icon-glow"></div>
+            </div>
+            <h3 class="service-title">Website Development</h3>
+            <p class="service-desc">High-performance, visually stunning websites built with cutting-edge technologies. From landing pages to full-stack web applications.</p>
+            <ul class="service-list">
+              <li><i class="fa-solid fa-arrow-right"></i> Custom Web Design</li>
+              <li><i class="fa-solid fa-arrow-right"></i> React / Next.js Apps</li>
+              <li><i class="fa-solid fa-arrow-right"></i> CMS Integration</li>
+              <li><i class="fa-solid fa-arrow-right"></i> Performance Optimization</li>
+            </ul>
+            <a href="contact.html#contact-form" class="service-link">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="service-card-glow"></div>
+        </div>
+
+        <!-- Service 2: Social Media Marketing -->
+        <div class="service-card featured" data-aos="fade-up" data-aos-delay="200" data-tilt>
+          <div class="featured-badge">Most Popular</div>
+          <div class="service-card-inner">
+            <div class="service-icon-wrapper">
+              <div class="service-icon">
+                <i class="fa-solid fa-share-nodes"></i>
+              </div>
+              <div class="service-icon-glow"></div>
+            </div>
+            <h3 class="service-title">Social Media Marketing</h3>
+            <p class="service-desc">Build a powerful social media presence that engages your audience, drives traffic, and converts followers into loyal customers.</p>
+            <ul class="service-list">
+              <li><i class="fa-solid fa-arrow-right"></i> Instagram & Facebook Ads</li>
+              <li><i class="fa-solid fa-arrow-right"></i> TikTok Marketing</li>
+              <li><i class="fa-solid fa-arrow-right"></i> Community Management</li>
+              <li><i class="fa-solid fa-arrow-right"></i> Influencer Partnerships</li>
+            </ul>
+            <a href="contact.html#contact-form" class="service-link">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="service-card-glow"></div>
+        </div>
+
+        <!-- Service 3: SEO -->
+        <div class="service-card" data-aos="fade-up" data-aos-delay="300" data-tilt>
+          <div class="service-card-inner">
+            <div class="service-icon-wrapper">
+              <div class="service-icon">
+                <i class="fa-brands fa-google"></i>
+              </div>
+              <div class="service-icon-glow"></div>
+            </div>
+            <h3 class="service-title">SEO Optimization</h3>
+            <p class="service-desc">Dominate search engine rankings with our comprehensive SEO strategies. Drive organic traffic and achieve sustainable long-term growth.</p>
+            <ul class="service-list">
+              <li><i class="fa-solid fa-arrow-right"></i> Technical SEO Audit</li>
+              <li><i class="fa-solid fa-arrow-right"></i> Keyword Research</li>
+              <li><i class="fa-solid fa-arrow-right"></i> Link Building</li>
+              <li><i class="fa-solid fa-arrow-right"></i> Local SEO</li>
+            </ul>
+            <a href="contact.html#contact-form" class="service-link">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="service-card-glow"></div>
+        </div>
+
+        <!-- Service 4: Content Writing -->
+        <div class="service-card" data-aos="fade-up" data-aos-delay="150" data-tilt>
+          <div class="service-card-inner">
+            <div class="service-icon-wrapper">
+              <div class="service-icon">
+                <i class="fa-solid fa-pen-fancy"></i>
+              </div>
+              <div class="service-icon-glow"></div>
+            </div>
+            <h3 class="service-title">Content Writing</h3>
+            <p class="service-desc">Compelling, SEO-optimized content that tells your brand story, engages readers, and drives conversions across all digital platforms.</p>
+            <ul class="service-list">
+              <li><i class="fa-solid fa-arrow-right"></i> Blog & Article Writing</li>
+              <li><i class="fa-solid fa-arrow-right"></i> Copywriting</li>
+              <li><i class="fa-solid fa-arrow-right"></i> Social Media Content</li>
+              <li><i class="fa-solid fa-arrow-right"></i> Email Campaigns</li>
+            </ul>
+            <a href="contact.html#contact-form" class="service-link">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="service-card-glow"></div>
+        </div>
+
+        <!-- Service 5: E-commerce -->
+        <div class="service-card" data-aos="fade-up" data-aos-delay="250" data-tilt>
+          <div class="service-card-inner">
+            <div class="service-icon-wrapper">
+              <div class="service-icon">
+                <i class="fa-solid fa-store"></i>
+              </div>
+              <div class="service-icon-glow"></div>
+            </div>
+            <h3 class="service-title">E-commerce Stores</h3>
+            <p class="service-desc">Launch and scale your online store with conversion-optimized e-commerce solutions built on Shopify, WooCommerce, or custom platforms.</p>
+            <ul class="service-list">
+              <li><i class="fa-solid fa-arrow-right"></i> Shopify Development</li>
+              <li><i class="fa-solid fa-arrow-right"></i> WooCommerce Setup</li>
+              <li><i class="fa-solid fa-arrow-right"></i> Product Listings</li>
+              <li><i class="fa-solid fa-arrow-right"></i> Payment Integration</li>
+            </ul>
+            <a href="contact.html#contact-form" class="service-link">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="service-card-glow"></div>
+        </div>
+
+        <!-- Service 6: Support Services -->
+        <div class="service-card" data-aos="fade-up" data-aos-delay="350" data-tilt>
+          <div class="service-card-inner">
+            <div class="service-icon-wrapper">
+              <div class="service-icon">
+                <i class="fa-solid fa-headset"></i>
+              </div>
+              <div class="service-icon-glow"></div>
+            </div>
+            <h3 class="service-title">Support Services</h3>
+            <p class="service-desc">24/7 dedicated support and maintenance to keep your digital assets running at peak performance with zero downtime.</p>
+            <ul class="service-list">
+              <li><i class="fa-solid fa-arrow-right"></i> 24/7 Technical Support</li>
+              <li><i class="fa-solid fa-arrow-right"></i> Website Maintenance</li>
+              <li><i class="fa-solid fa-arrow-right"></i> Performance Monitoring</li>
+              <li><i class="fa-solid fa-arrow-right"></i> Security Updates</li>
+            </ul>
+            <a href="contact.html#contact-form" class="service-link">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="service-card-glow"></div>
+        </div>
+
+        <!-- Service 7: Outsourcing -->
+        <div class="service-card wide-card" data-aos="fade-up" data-aos-delay="400" data-tilt>
+          <div class="service-card-inner">
+            <div class="service-icon-wrapper">
+              <div class="service-icon">
+                <i class="fa-solid fa-earth-americas"></i>
+              </div>
+              <div class="service-icon-glow"></div>
+            </div>
+            <div class="wide-card-content">
+              <h3 class="service-title">Outsourcing Solutions</h3>
+              <p class="service-desc">Scale your team with our expert outsourcing services. From virtual assistants to full development teams – get top-tier talent without the overhead costs.</p>
+              <ul class="service-list horizontal-list">
+                <li><i class="fa-solid fa-arrow-right"></i> Dedicated Development Teams</li>
+                <li><i class="fa-solid fa-arrow-right"></i> Virtual Assistants</li>
+                <li><i class="fa-solid fa-arrow-right"></i> Project Management</li>
+                <li><i class="fa-solid fa-arrow-right"></i> White-Label Services</li>
+                <li><i class="fa-solid fa-arrow-right"></i> Staff Augmentation</li>
+                <li><i class="fa-solid fa-arrow-right"></i> Flexible Contracts</li>
+              </ul>
+              <a href="contact.html#contact-form" class="service-link">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="service-card-glow"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PROCESS SECTION ====== -->
+  <section id="process" class="process-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">How We Work</div>
+        <h2 class="section-title">Our Proven <span class="gradient-text">Process</span></h2>
+         <p class="section-desc">A streamlined approach that delivers exceptional results every time.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+          <div class="step-number">01</div>
+          <div class="step-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+          <h3>Discovery</h3>
+          <p>We deep-dive into your business goals, target audience, and competitive landscape.</p>
+        </div>
+        <div class="process-line"></div>
+        <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+          <div class="step-number">02</div>
+          <div class="step-icon"><i class="fa-solid fa-lightbulb"></i></div>
+          <h3>Strategy</h3>
+          <p>Craft a custom data-driven marketing strategy tailored to your specific goals.</p>
+        </div>
+        <div class="process-line"></div>
+        <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+          <div class="step-number">03</div>
+          <div class="step-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <h3>Execute</h3>
+          <p>Our expert team brings the strategy to life with precision and creative excellence.</p>
+        </div>
+        <div class="process-line"></div>
+        <div class="process-step" data-aos="fade-up" data-aos-delay="400">
+          <div class="step-number">04</div>
+          <div class="step-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <h3>Optimize</h3>
+          <p>Continuous monitoring, testing, and optimization to maximize your ROI.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PORTFOLIO SECTION ====== -->
+  <section id="portfolio" class="portfolio-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">Our Work</div>
+        <h2 class="section-title">Featured <span class="gradient-text">Portfolio</span></h2>
+        <p class="section-desc">A selection of our finest work delivering exceptional results for our clients.</p>
+      </div>
+
+      <div class="portfolio-filter" data-aos="fade-up" data-aos-delay="100">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="web">Web Dev</button>
+        <button class="filter-btn" data-filter="social">Social Media</button>
+        <button class="filter-btn" data-filter="seo">SEO</button>
+        <button class="filter-btn" data-filter="ecom">E-commerce</button>
+      </div>
+
+      <div class="portfolio-grid" id="portfolioGrid">
+
+        <div class="portfolio-card" data-category="web" data-aos="fade-up" data-aos-delay="100">
+          <div class="portfolio-img">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="TechCorp SaaS Platform" loading="lazy" />
+          </div>
+          <div class="portfolio-overlay">
+            <span class="portfolio-tag">Web Development</span>
+            <h3>TechCorp SaaS Platform</h3>
+            <p><i class="fa-solid fa-arrow-trend-up"></i> +240% User Engagement</p>
+            <a href="portfolio.html" class="portfolio-btn">View Case Study <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="portfolio-card" data-category="social" data-aos="fade-up" data-aos-delay="200">
+          <div class="portfolio-img">
+            <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&q=80" alt="FashionForward Brand" loading="lazy" />
+          </div>
+          <div class="portfolio-overlay">
+            <span class="portfolio-tag">Social Media</span>
+            <h3>FashionForward Brand</h3>
+            <p><i class="fa-solid fa-arrow-trend-up"></i> 500K+ New Followers</p>
+            <a href="portfolio.html" class="portfolio-btn">View Case Study <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="portfolio-card" data-category="seo" data-aos="fade-up" data-aos-delay="300">
+          <div class="portfolio-img">
+            <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=80" alt="HealthPlus Clinic" loading="lazy" />
+          </div>
+          <div class="portfolio-overlay">
+            <span class="portfolio-tag">SEO</span>
+            <h3>HealthPlus Clinic</h3>
+            <p><i class="fa-solid fa-ranking-star"></i> #1 Google Ranking</p>
+            <a href="portfolio.html" class="portfolio-btn">View Case Study <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="portfolio-card" data-category="ecom" data-aos="fade-up" data-aos-delay="150">
+          <div class="portfolio-img">
+            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&q=80" alt="LuxeStore Online" loading="lazy" />
+          </div>
+          <div class="portfolio-overlay">
+            <span class="portfolio-tag">E-commerce</span>
+            <h3>LuxeStore Online</h3>
+            <p><i class="fa-solid fa-dollar-sign"></i> $2M+ Revenue Generated</p>
+            <a href="portfolio.html" class="portfolio-btn">View Case Study <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="portfolio-card" data-category="web" data-aos="fade-up" data-aos-delay="250">
+          <div class="portfolio-img">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="FinTech Dashboard" loading="lazy" />
+          </div>
+          <div class="portfolio-overlay">
+            <span class="portfolio-tag">Web Development</span>
+            <h3>FinTech Dashboard</h3>
+            <p><i class="fa-solid fa-arrow-trend-up"></i> 3x Conversion Rate</p>
+            <a href="portfolio.html" class="portfolio-btn">View Case Study <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="portfolio-card" data-category="social" data-aos="fade-up" data-aos-delay="350">
+          <div class="portfolio-img">
+            <img src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?w=600&q=80" alt="FoodieHub Campaign" loading="lazy" />
+          </div>
+          <div class="portfolio-overlay">
+            <span class="portfolio-tag">Social Media</span>
+            <h3>FoodieHub Campaign</h3>
+            <p><i class="fa-solid fa-eye"></i> 10M+ Impressions</p>
+            <a href="portfolio.html" class="portfolio-btn">View Case Study <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Results / Impact Section -->
+<section class="results-premium">
+  <div class="container">
+    <div class="section-tag" data-aos="fade-up">Our Impact</div>
+    <h2 class="section-title" data-aos="fade-up">Results That <span class="gradient-text">Speak Volumes</span></h2>
+    <p style="text-align: center; color: #aaa; max-width: 600px; margin: 0 auto 20px;" data-aos="fade-up">Numbers that reflect our dedication and excellence across the globe.</p>
+    
+    <div class="results-premium-grid">
+      <div class="result-premium-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="result-premium-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <div><span class="result-premium-number counter" data-target="340">0</span><span class="result-premium-suffix">%</span></div>
+        <h3>Average Traffic Growth</h3>
+        <p>Measurable increase in organic reach</p>
+      </div>
+      <div class="result-premium-card" data-aos="fade-up" data-aos-delay="150">
+        <div class="result-premium-icon"><i class="fa-solid fa-dollar-sign"></i></div>
+        <div><span class="result-premium-number counter" data-target="12">0</span><span class="result-premium-suffix">M+</span></div>
+        <h3>Revenue Generated</h3>
+        <p>Return on investment for our clients</p>
+      </div>
+      <div class="result-premium-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="result-premium-icon"><i class="fa-solid fa-users"></i></div>
+        <div><span class="result-premium-number counter" data-target="500">0</span><span class="result-premium-suffix">+</span></div>
+        <h3>Happy Clients</h3>
+        <p>Trusted by businesses worldwide</p>
+      </div>
+      <div class="result-premium-card" data-aos="fade-up" data-aos-delay="250">
+        <div class="result-premium-icon"><i class="fa-solid fa-award"></i></div>
+        <div><span class="result-premium-number counter" data-target="47">0</span><span class="result-premium-suffix">+</span></div>
+        <h3>Global Awards</h3>
+        <p>Recognized for digital excellence</p>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- ====== TESTIMONIALS ====== -->
+  <section id="testimonials" class="testimonials-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">Client Stories</div>
+        <h2 class="section-title">What Our Clients <span class="gradient-text">Say</span></h2>
+        <p class="section-desc">Real results. Real clients. Real success stories from businesses we've helped grow.</p>
+      </div>
+
+      <div class="swiper testimonials-swiper" data-aos="fade-up" data-aos-delay="200">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="testimonial-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="testimonial-text">"NexaVision completely transformed our online presence. Our website traffic increased by 450% in just 6 months. Their SEO strategies are unmatched in the industry."</p>
+              <div class="testimonial-author">
+               <div class="author-avatar">
+  <img src="https://i.pravatar.cc/80?img=12" alt="James Davidson" />
+</div>
+                <div class="author-info">
+                  <strong>Rehan Ahmed</strong>
+                  <span>CEO, TechCorp Solutions</span>
+                </div>
+                <div class="testimonial-logo"><i class="fa-solid fa-building"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="testimonial-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="testimonial-text">"The social media campaigns they ran for our fashion brand were absolutely brilliant. We gained 500K followers and our sales doubled within 3 months. Outstanding team!"</p>
+              <div class="testimonial-author">
+             <div class="author-avatar">
+  <img src="https://i.pravatar.cc/80?img=32" alt="Sarah Mitchell" />
+</div>
+                <div class="author-info">
+                  <strong>Abiha Khan</strong>
+                  <span>Founder, FashionForward</span>
+                </div>
+                <div class="testimonial-logo"><i class="fa-solid fa-store"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="testimonial-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="testimonial-text">"Our e-commerce store built by NexaVision generated $2M in revenue in the first year. Their attention to detail and understanding of user experience is phenomenal."</p>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+  <img src="https://i.pravatar.cc/80?img=45" alt="Raj Kumar" />
+</div>
+                <div class="author-info">
+                  <strong>Mehak Malik</strong>
+                  <span>Director, LuxeStore</span>
+                </div>
+                <div class="testimonial-logo"><i class="fa-brands fa-shopify"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="testimonial-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="testimonial-text">"The content writing team at NexaVision is exceptional. Our blog went from 0 to 50K monthly visitors. Every piece is SEO-optimized and genuinely engaging."</p>
+              <div class="testimonial-author">
+              <div class="author-avatar">
+  <img src="https://i.pravatar.cc/80?img=56" alt="Amanda Lee" />
+</div>
+                <div class="author-info">
+                  <strong>Muhammad Junaid</strong>
+                  <span>Marketing Manager, HealthPlus</span>
+                </div>
+                <div class="testimonial-logo"><i class="fa-solid fa-hospital"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PRICING SECTION ====== -->
+  <section id="pricing" class="pricing-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">Investment</div>
+        <h2 class="section-title">Transparent <span class="gradient-text">Pricing</span></h2>
+        <p class="section-desc">Choose the plan that fits your business goals. All plans include dedicated support.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="pricing-header">
+            <h3>Starter</h3>
+            <div class="pricing-price"><span>$</span>499<span>/mo</span></div>
+            <p>Perfect for small businesses</p>
+          </div>
+          <ul class="pricing-features">
+            <li><i class="fa-solid fa-check"></i> 5-Page Website</li>
+            <li><i class="fa-solid fa-check"></i> Basic SEO Setup</li>
+            <li><i class="fa-solid fa-check"></i> Social Media Management (2 platforms)</li>
+            <li><i class="fa-solid fa-check"></i> 4 Blog Posts/Month</li>
+            <li><i class="fa-solid fa-check"></i> Email Support</li>
+            <li class="disabled"><i class="fa-solid fa-xmark"></i> E-commerce Setup</li>
+            <li class="disabled"><i class="fa-solid fa-xmark"></i> Priority Support</li>
+          </ul>
+          <a href="contact.html#contact-form" class="btn-pricing">Get Started</a>
+        </div>
+        <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="200">
+          <div class="pricing-badge">Best Value</div>
+          <div class="pricing-header">
+            <h3>Professional</h3>
+            <div class="pricing-price"><span>$</span>1,299<span>/mo</span></div>
+            <p>For growing businesses</p>
+          </div>
+          <ul class="pricing-features">
+            <li><i class="fa-solid fa-check"></i> 15-Page Website</li>
+            <li><i class="fa-solid fa-check"></i> Advanced SEO + Link Building</li>
+            <li><i class="fa-solid fa-check"></i> Social Media (5 platforms)</li>
+            <li><i class="fa-solid fa-check"></i> 12 Blog Posts/Month</li>
+            <li><i class="fa-solid fa-check"></i> E-commerce Integration</li>
+            <li><i class="fa-solid fa-check"></i> Priority Support 24/7</li>
+            <li><i class="fa-solid fa-check"></i> Monthly Analytics Report</li>
+          </ul>
+          <a href="contact.html#contact-form" class="btn-pricing featured-btn">Get Started</a>
+        </div>
+        <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="pricing-header">
+            <h3>Enterprise</h3>
+            <div class="pricing-price custom-price">Custom</div>
+            <p>For large organizations</p>
+          </div>
+          <ul class="pricing-features">
+            <li><i class="fa-solid fa-check"></i> Unlimited Pages</li>
+            <li><i class="fa-solid fa-check"></i> Full SEO Suite</li>
+            <li><i class="fa-solid fa-check"></i> All Social Platforms</li>
+            <li><i class="fa-solid fa-check"></i> Unlimited Content</li>
+            <li><i class="fa-solid fa-check"></i> Custom E-commerce Solution</li>
+            <li><i class="fa-solid fa-check"></i> Dedicated Account Manager</li>
+            <li><i class="fa-solid fa-check"></i> Full Outsourcing Team</li>
+          </ul>
+          <a href="contact.html#contact-form" class="btn-pricing">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CTA SECTION ====== -->
+  <section class="cta-section">
+    <div class="cta-orb cta-orb-1"></div>
+    <div class="cta-orb cta-orb-2"></div>
+    <div class="container">
+      <div class="cta-content" data-aos="zoom-in">
+        <div class="section-tag">Ready to Grow?</div>
+        <h2 class="cta-title">Let's Build Something <span class="gradient-text">Amazing</span> Together</h2>
+        <p class="cta-desc">Join 500+ businesses that have already transformed their digital presence with NexaVision. Your success story starts here.</p>
+        <div class="cta-actions">
+          <a href="contact.html#contact-form" class="btn-cta-primary">
+            <i class="fa-solid fa-paper-plane"></i> Start Your Project
+          </a>
+          <a href="tel:+15551234567" class="btn-cta-secondary">
+            <i class="fa-solid fa-phone"></i> Call Us Now
+          </a>
+        </div>
+        <div class="cta-trust">
+          <span><i class="fa-solid fa-shield-halved"></i> No contracts</span>
+          <span><i class="fa-solid fa-rotate-left"></i> Money-back guarantee</span>
+          <span><i class="fa-solid fa-headset"></i> 24/7 support</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CONTACT SECTION ====== -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">Get In Touch</div>
+        <h2 class="section-title">Start Your <span class="gradient-text">Journey</span></h2>
+        <p class="section-desc">Have questions or ready to start your project? Contact us today and let's discuss how we can help your business thrive in the digital world.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info" data-aos="fade-right">
+          <h3>Let's Talk Business</h3>
+          <p>Ready to take your digital presence to the next level? Our team of experts is here to create a customized strategy for your business.</p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <strong>Email Us</strong>
+                <a href="mailto:arishamukhtiar303@gmail.com">arishamukhtiar303@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+              <div>
+                <strong>Call Us</strong>
+                <a href="tel:+923701001249">+92 370 100 1249</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <strong>Office</strong>
+                <span>123 Digital Avenue, New York, NY 10001</span>
+              </div>
+            </div>
+          </div>
+         
+        </div>
+        <div class="contact-form-wrapper" data-aos="fade-left">
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" placeholder="Arisha Mukhtiar" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="arishamukhtiar303@gmail.com" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+92 370 100 1249" />
+              </div>
+              <div class="form-group">
+                <label for="service">Service Interested In</label>
+                <select id="service" name="service">
+                  <option value="">Select a Service</option>
+                  <option value="web">Website Development</option>
+                  <option value="social">Social Media Marketing</option>
+                  <option value="seo">SEO Optimization</option>
+                  <option value="content">Content Writing</option>
+                  <option value="ecom">E-commerce Stores</option>
+                  <option value="support">Support Services</option>
+                  <option value="outsource">Outsourcing</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="budget">Monthly Budget</label>
+              <select id="budget" name="budget">
+                <option value="">Select Budget Range</option>
+                <option value="500">$500 – $1,000</option>
+                <option value="1000">$1,000 – $3,000</option>
+                <option value="3000">$3,000 – $10,000</option>
+                <option value="10000">$10,000+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Tell Us About Your Project *</label>
+              <textarea id="message" name="message" rows="4" placeholder="Describe your project goals, current challenges, and what success looks like for you..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit" id="submitBtn">
+              <span class="btn-text">Send Message <i class="fa-solid fa-paper-plane"></i></span>
+              <span class="btn-loading" style="display:none;"><i class="fa-solid fa-spinner fa-spin"></i> Sending...</span>
+            </button>
+            <div class="form-success" id="formSuccess" style="display:none;">
+              <i class="fa-solid fa-circle-check"></i>
+              <strong>Message Sent Successfully!</strong>
+              <p>We'll get back to you within 24 hours.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <!-- Footer Section -->
+<footer class="footer-premium">
+  <div class="container">
+    <div class="footer-premium-grid">
+      <!-- Brand Column -->
+      <div class="footer-premium-brand">
+        <div class="logo">
+          <i class="fas fa-cube"></i> 
+          <span class="nexa-white">Nexa</span><span class="vision-purple">Vision</span>
+        </div>
+        <p>Transforming businesses through innovative digital marketing strategies and cutting-edge web solutions since 2016.</p>
+        <div class="footer-premium-social">
+          <a href="#" class="fb" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="ig" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="li" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        
+        </div>
+      </div>
+
+      <!-- Services Column -->
+      <div class="footer-premium-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Web Development</a></li>
+          <li><a href="#">Social Media Marketing</a></li>
+          <li><a href="#">SEO Optimization</a></li>
+          <li><a href="#">Content Writing</a></li>
+          <li><a href="#">E-commerce Stores</a></li>
+          <li><a href="services.html">Support Services</a></li>
+          <li><a href="#">Outsourcing</a></li>
+        </ul>
+      </div>
+
+      <!-- Company Column -->
+      <div class="footer-premium-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="index.html#process">Our Process</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+         
+        </ul>
+      </div>
+
+      <!-- Newsletter Column -->
+      <div class="footer-premium-col">
+        <h4>Newsletter</h4>
+        <p>Get insights, trends, and exclusive offers.</p>
+        <div class="footer-premium-newsletter-input">
+          <input type="email" placeholder="Your email address" id="footerEmail">
+          <button id="footerSubscribeBtn"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+</footer>
+
+  <!-- ====== BACK TO TOP ====== -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

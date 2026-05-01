@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>NexaVision – Premium Digital Services</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" />
+
+  <!-- AOS Animation -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #05070a;
+      font-family: 'Inter', sans-serif;
+      color: #ffffff;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated Background */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      overflow: hidden;
+    }
+    .animated-bg .gradient-bg {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 20% 30%, rgba(139,92,246,0.15), transparent 50%),
+                  radial-gradient(circle at 80% 70%, rgba(59,130,246,0.1), transparent 50%);
+      animation: bgShift 20s ease-in-out infinite;
+    }
+    @keyframes bgShift {
+      0% { transform: translate(0%, 0%) scale(1); }
+      50% { transform: translate(-10%, -5%) scale(1.05); }
+      100% { transform: translate(0%, 0%) scale(1); }
+    }
+    .animated-bg .floating-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.4;
+      animation: floatOrb 25s infinite alternate;
+    }
+    .orb1 { width: 400px; height: 400px; background: #8B5CF6; top: -100px; left: -100px; animation-duration: 30s; }
+    .orb2 { width: 500px; height: 500px; background: #3B82F6; bottom: -150px; right: -100px; animation-duration: 25s; animation-delay: -5s; }
+    .orb3 { width: 300px; height: 300px; background: #EC4899; top: 50%; left: 50%; animation-duration: 35s; opacity: 0.2; }
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(50px, 50px) scale(1.2); }
+    }
+
+    /* Custom Cursor */
+    #cursor-dot {
+      width: 6px;
+      height: 6px;
+      background: #8B5CF6;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.1s;
+    }
+    #cursor-circle {
+      width: 32px;
+      height: 32px;
+      border: 1.5px solid rgba(139, 92, 246, 0.6);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transition: all 0.15s ease-out;
+    }
+
+    /* Preloader */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #05070a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      transition: opacity 0.8s ease;
+    }
+    .loader-ring {
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
+    .loader-ring div {
+      box-sizing: border-box;
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      margin: 8px;
+      border: 4px solid #8B5CF6;
+      border-radius: 50%;
+      animation: loader-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      border-color: #8B5CF6 transparent transparent transparent;
+    }
+    .loader-ring div:nth-child(1) { animation-delay: -0.45s; }
+    .loader-ring div:nth-child(2) { animation-delay: -0.3s; }
+    .loader-ring div:nth-child(3) { animation-delay: -0.15s; }
+    @keyframes loader-ring {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .loader-text {
+      margin-left: 20px;
+      font-family: 'Space Grotesk', monospace;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 18px 0;
+      transition: all 0.3s ease;
+      background: #000000;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+    }
+    .navbar.scrolled {
+      background: #000000;
+      padding: 12px 0;
+    }
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo-link { text-decoration: none; display: flex; align-items: center; }
+    .logo { display: flex; align-items: center; gap: 4px; font-size: 1.9rem; font-weight: 600; }
+    .logo .nexa { color: #ffffff; }
+    .logo .vision { background: linear-gradient(135deg, #8B5CF6, #3B82F6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .logo i { color: #8B5CF6; font-size: 2rem; margin-right: 8px; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; }
+    .nav-links a { text-decoration: none; color: #e0e0e0; font-weight: 500; transition: 0.3s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background: linear-gradient(90deg, #8B5CF6, #3B82F6); transition: 0.3s; }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-links a:hover, .nav-links a.active { color: white; }
+    .nav-actions { display: flex; align-items: center; gap: 20px; }
+    .btn-primary-nav {
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+      padding: 10px 28px;
+      border-radius: 40px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s;
+      white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(139,92,246,0.3);
+    }
+    .btn-primary-nav:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(139,92,246,0.4); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 6px; }
+    .hamburger span { width: 28px; height: 2px; background: white; transition: 0.3s; }
+    @media (max-width: 992px) {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        max-width: 320px;
+        height: 100vh;
+        background: #000000;
+        backdrop-filter: blur(24px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: right 0.4s ease;
+        border-left: 1px solid rgba(139,92,246,0.3);
+      }
+      .nav-links.active { right: 0; }
+      .hamburger { display: flex; }
+      .nav-container { padding: 0 25px; }
+      .btn-primary-nav { padding: 8px 18px; font-size: 0.9rem; }
+    }
+    @media (max-width: 576px) {
+      .logo { font-size: 1.5rem; }
+      .logo i { font-size: 1.6rem; }
+      .btn-primary-nav { padding: 6px 14px; font-size: 0.75rem; }
+    }
+
+    /* Hero Section with Banner Image */
+    .services-hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 140px 0 80px;
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.7)), url('https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/8103728/821817_157617.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .hero-content {
+      text-align: center;
+      max-width: 900px;
+      z-index: 2;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(139,92,246,0.2);
+      backdrop-filter: blur(4px);
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+      border: 1px solid rgba(139,92,246,0.3);
+    }
+    .services-hero h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    @media (max-width: 768px) { .services-hero h1 { font-size: 2.5rem; } }
+    .gradient-text {
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .section-tag {
+      color: #8B5CF6;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.85rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .section-title {
+      font-size: 3rem;
+      margin-bottom: 25px;
+      line-height: 1.2;
+      font-weight: 700;
+      text-align: center;
+    }
+    @media (max-width: 768px) { .section-title { font-size: 2rem; } }
+
+    /* Services Grid */
+    .services-main {
+      padding: 80px 0 100px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 35px;
+      margin-top: 60px;
+    }
+    .service-card {
+      background: rgba(10, 12, 18, 0.6);
+      backdrop-filter: blur(8px);
+      border-radius: 32px;
+      padding: 40px 30px;
+      transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Last card (Outsourcing) - Center it */
+    .services-grid .service-card:last-child {
+      grid-column: 1 / -1;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+    }
+    .service-card:hover {
+      transform: translateY(-12px);
+      border-color: #8B5CF6;
+      box-shadow: 0 25px 40px -20px rgba(139,92,246,0.4);
+    }
+    .service-icon {
+      font-size: 3.5rem;
+      margin-bottom: 25px;
+      display: inline-block;
+    }
+    .service-card:nth-child(1) .service-icon { color: #3B82F6; }
+    .service-card:nth-child(2) .service-icon { color: #E4405F; }
+    .service-card:nth-child(3) .service-icon { color: #34A853; }
+    .service-card:nth-child(4) .service-icon { color: #F59E0B; }
+    .service-card:nth-child(5) .service-icon { color: #EF4444; }
+    .service-card:nth-child(6) .service-icon { color: #8B5CF6; }
+    .service-card:nth-child(7) .service-icon { color: #06B6D4; }
+    .service-card h3 { font-size: 1.8rem; margin-bottom: 15px; font-weight: 700; }
+    .service-card p { color: #b0b3c0; line-height: 1.6; margin-bottom: 20px; }
+    .service-features { list-style: none; margin-top: 20px; }
+    .service-features li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; color: #aaa; font-size: 0.9rem; }
+    .service-features li i { color: #8B5CF6; font-size: 0.8rem; }
+    .service-link { display: inline-block; margin-top: 25px; color: #8B5CF6; text-decoration: none; font-weight: 600; transition: 0.3s; }
+    .service-link i { transition: 0.3s; margin-left: 5px; }
+    .service-link:hover { color: #a78bfa; }
+    .service-link:hover i { transform: translateX(5px); }
+
+    /* Impact Section */
+    .impact-section {
+      padding: 100px 0;
+      background: linear-gradient(145deg, #080b10, #020406);
+    }
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 35px;
+      margin-top: 60px;
+    }
+    .impact-card {
+      background: rgba(10, 12, 18, 0.6);
+      backdrop-filter: blur(8px);
+      border-radius: 32px;
+      padding: 50px 30px;
+      text-align: center;
+      transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    .impact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 0%, rgba(139,92,246,0.1), transparent);
+      opacity: 0;
+      transition: 0.4s;
+    }
+    .impact-card:hover {
+      transform: translateY(-12px);
+      border-color: #8B5CF6;
+      box-shadow: 0 25px 40px -20px rgba(139,92,246,0.4);
+    }
+    .impact-card:hover::before { opacity: 1; }
+    .impact-icon {
+      font-size: 3.5rem;
+      margin-bottom: 25px;
+      display: inline-block;
+    }
+    .impact-card:nth-child(1) .impact-icon { color: #3B82F6; }
+    .impact-card:nth-child(2) .impact-icon { color: #34A853; }
+    .impact-card:nth-child(3) .impact-icon { color: #F59E0B; }
+    .impact-card:nth-child(4) .impact-icon { color: #E4405F; }
+    .impact-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff, #8B5CF6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .impact-suffix {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff, #8B5CF6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .impact-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .impact-card p {
+      color: #b0b3c0;
+      font-size: 0.95rem;
+    }
+
+    /* Process Section - Fixed Spacing */
+    .process-section {
+      padding: 80px 0;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-top: 60px;
+    }
+    @media (max-width: 992px) {
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+    }
+    @media (max-width: 576px) {
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .process-step {
+      text-align: center;
+      padding: 35px 25px;
+      background: rgba(10, 12, 18, 0.5);
+      border-radius: 28px;
+      border: 1px solid rgba(139,92,246,0.15);
+      transition: all 0.4s;
+    }
+    .process-step:hover {
+      transform: translateY(-8px);
+      border-color: #8B5CF6;
+      background: rgba(139,92,246,0.05);
+    }
+    .step-number {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+    }
+    .process-step h3 { font-size: 1.5rem; margin-bottom: 12px; }
+    .process-step p { color: #aaa; line-height: 1.5; }
+
+    /* Pricing Section */
+    .pricing-section {
+      padding: 80px 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(139,92,246,0.03), transparent);
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 35px;
+      margin-top: 60px;
+    }
+    .pricing-card {
+      background: rgba(10, 12, 18, 0.6);
+      border-radius: 32px;
+      padding: 40px 30px;
+      text-align: center;
+      border: 1px solid rgba(139,92,246,0.2);
+      transition: 0.4s;
+    }
+    .pricing-card:hover { transform: translateY(-10px); border-color: #8B5CF6; }
+    .pricing-card.featured { border-color: #8B5CF6; background: rgba(139,92,246,0.05); }
+    .pricing-price { font-size: 2.5rem; font-weight: 700; margin: 20px 0; }
+    .pricing-price span { font-size: 1rem; color: #aaa; }
+    .pricing-features { list-style: none; margin: 25px 0; }
+    .pricing-features li { margin-bottom: 12px; color: #aaa; }
+    .pricing-features li i { color: #8B5CF6; margin-right: 10px; }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #8B5CF6;
+      padding: 12px 32px;
+      border-radius: 40px;
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.3s;
+    }
+    .btn-outline:hover { background: #8B5CF6; }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+      padding: 14px 38px;
+      border-radius: 40px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      display: inline-block;
+      transition: 0.3s;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(139,92,246,0.4); }
+
+    /* Footer with YouTube Icon */
+    .footer {
+      background: #020407;
+      padding-top: 70px;
+      border-top: 1px solid rgba(139,92,246,0.15);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 50px;
+      padding-bottom: 50px;
+    }
+    @media (max-width: 992px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
+    @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; text-align: center; } }
+    .footer-social { display: flex; gap: 18px; margin-top: 20px; }
+    @media (max-width: 600px) { .footer-social { justify-content: center; } }
+    .footer-social a { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: 0.3s; text-decoration: none; font-size: 1.4rem; }
+    .footer-social .fb { background: #1877F2; color: white; }
+    .footer-social .ig { background: radial-gradient(circle at 30% 110%, #ffdb7e, #f9ce34, #ee2a7b, #6228d7); color: white; }
+    .footer-social .li { background: #0A66C2; color: white; }
+    .footer-social .yt { background: #FF0000; color: white; }
+    .footer-social a:hover { transform: translateY(-5px); filter: brightness(1.05); }
+    .footer-col h4 { font-size: 1.2rem; margin-bottom: 25px; position: relative; display: inline-block; }
+    .footer-col h4:after { content: ''; position: absolute; bottom: -8px; left: 0; width: 40px; height: 2px; background: #8B5CF6; }
+    @media (max-width: 600px) { .footer-col h4:after { left: 50%; transform: translateX(-50%); } }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 12px; }
+    .footer-col ul li a { color: #aaa; text-decoration: none; transition: 0.3s; }
+    .footer-col ul li a:hover { color: #8B5CF6; padding-left: 5px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding: 25px 0; text-align: center; color: #5a5d6e; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #8B5CF6;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: none;
+      color: white;
+      cursor: pointer;
+      z-index: 99;
+      opacity: 0;
+      transition: 0.3s;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Animated Background -->
+<div class="animated-bg">
+  <div class="gradient-bg"></div>
+  <div class="floating-orb orb1"></div>
+  <div class="floating-orb orb2"></div>
+  <div class="floating-orb orb3"></div>
+</div>
+
+<div id="preloader"><div class="loader-ring"><div></div><div></div><div></div><div></div></div><p class="loader-text">NexaVision</p></div>
+<div id="cursor-dot"></div>
+<div id="cursor-circle"></div>
+
+<!-- Navbar -->
+<div class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo-link"><div class="logo"><i class="fas fa-cube"></i><span class="nexa">Nexa</span><span class="vision">Vision</span></div></a>
+          <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    <div class="nav-actions">
+      <a href="contact.html#contact-form" class="btn-primary-nav">Start Project <i class="fa-solid fa-arrow-right"></i></a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</div>
+
+<!-- Hero Section with Banner Image -->
+<section id="home" class="services-hero">
+  <div class="hero-content" data-aos="fade-up">
+    <div class="hero-badge"><i class="fa-regular fa-star"></i> Premium Digital Solutions</div>
+    <h1>Our <span class="gradient-text">Services</span></h1>
+    <p style="font-size: 1.1rem; max-width: 700px; margin: 20px auto; opacity:0.9">Comprehensive digital solutions tailored to accelerate your business growth and dominate your market.</p>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services-main">
+  <div class="container">
+    <div class="section-tag" data-aos="fade-up">What We Offer</div>
+    <h2 class="section-title" data-aos="fade-up">Premium <span class="gradient-text">Solutions</span></h2>
+    <div class="services-grid">
+      <div class="service-card" data-aos="fade-up" data-aos-delay="100"><div class="service-icon"><i class="fa-solid fa-code"></i></div><h3>Web Development</h3><p>High-performance websites built with cutting-edge technologies.</p><ul class="service-features"><li><i class="fa-solid fa-circle-check"></i> Custom Web Design</li><li><i class="fa-solid fa-circle-check"></i> React / Next.js Apps</li><li><i class="fa-solid fa-circle-check"></i> CMS Integration</li></ul><a href="contact.html#contact-form" class="service-link">Get Started <i class="fa-solid fa-arrow-right"></i></a></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="150"><div class="service-icon"><i class="fa-solid fa-share-nodes"></i></div><h3>Social Media Marketing</h3><p>Build a powerful social media presence that engages and converts.</p><ul class="service-features"><li><i class="fa-solid fa-circle-check"></i> Instagram & Facebook Ads</li><li><i class="fa-solid fa-circle-check"></i> TikTok Marketing</li><li><i class="fa-solid fa-circle-check"></i> Community Management</li></ul><a href="contact.html#contact-form" class="service-link">Get Started <i class="fa-solid fa-arrow-right"></i></a></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="200"><div class="service-icon"><i class="fa-brands fa-google"></i></div><h3>SEO Optimization</h3><p>Dominate search rankings with comprehensive SEO strategies.</p><ul class="service-features"><li><i class="fa-solid fa-circle-check"></i> Technical SEO Audit</li><li><i class="fa-solid fa-circle-check"></i> Keyword Research</li><li><i class="fa-solid fa-circle-check"></i> Link Building</li></ul><a href="contact.html#contact-form" class="service-link">Get Started <i class="fa-solid fa-arrow-right"></i></a></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="250"><div class="service-icon"><i class="fa-solid fa-pen-fancy"></i></div><h3>Content Writing</h3><p>Compelling, SEO-optimized content that tells your brand story.</p><ul class="service-features"><li><i class="fa-solid fa-circle-check"></i> Blog & Article Writing</li><li><i class="fa-solid fa-circle-check"></i> Copywriting</li><li><i class="fa-solid fa-circle-check"></i> Social Media Content</li></ul><a href="contact.html#contact-form" class="service-link">Get Started <i class="fa-solid fa-arrow-right"></i></a></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="300"><div class="service-icon"><i class="fa-solid fa-store"></i></div><h3>E-commerce Stores</h3><p>Launch and scale your online store with conversion-optimized solutions.</p><ul class="service-features"><li><i class="fa-solid fa-circle-check"></i> Shopify Development</li><li><i class="fa-solid fa-circle-check"></i> WooCommerce Setup</li><li><i class="fa-solid fa-circle-check"></i> Payment Integration</li></ul><a href="contact.html#contact-form" class="service-link">Get Started <i class="fa-solid fa-arrow-right"></i></a></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="350"><div class="service-icon"><i class="fa-solid fa-headset"></i></div><h3>Support Services</h3><p>24/7 dedicated support and maintenance for zero downtime.</p><ul class="service-features"><li><i class="fa-solid fa-circle-check"></i> 24/7 Technical Support</li><li><i class="fa-solid fa-circle-check"></i> Website Maintenance</li><li><i class="fa-solid fa-circle-check"></i> Security Updates</li></ul><a href="contact.html#contact-form" class="service-link">Get Started <i class="fa-solid fa-arrow-right"></i></a></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="400"><div class="service-icon"><i class="fa-solid fa-earth-americas"></i></div><h3>Outsourcing Solutions</h3><p>Scale your team with expert outsourcing services without overhead costs.</p><ul class="service-features"><li><i class="fa-solid fa-circle-check"></i> Dedicated Teams</li><li><i class="fa-solid fa-circle-check"></i> Virtual Assistants</li><li><i class="fa-solid fa-circle-check"></i> White-Label Services</li></ul><a href="contact.html#contact-form" class="service-link">Get Started <i class="fa-solid fa-arrow-right"></i></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- Impact Section -->
+<section class="impact-section">
+  <div class="container">
+    <div class="section-tag" data-aos="fade-up">Our Impact</div>
+    <h2 class="section-title" data-aos="fade-up">Results That <span class="gradient-text">Speak Volumes</span></h2>
+    <p style="text-align: center; color: #aaa; max-width: 600px; margin: 0 auto 20px;" data-aos="fade-up">Numbers that reflect our dedication and excellence across the globe.</p>
+    
+    <div class="impact-grid">
+      <div class="impact-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="impact-icon"><i class="fa-solid fa-code-branch"></i></div>
+        <div><span class="impact-number counter" data-target="580">0</span><span class="impact-suffix">+</span></div>
+        <h3>Projects Delivered</h3>
+        <p>Successfully completed for global clients</p>
+      </div>
+      <div class="impact-card" data-aos="fade-up" data-aos-delay="150">
+        <div class="impact-icon"><i class="fa-regular fa-face-smile"></i></div>
+        <div><span class="impact-number counter" data-target="99">0</span><span class="impact-suffix">%</span></div>
+        <h3>Client Satisfaction</h3>
+        <p>Rated excellent by our happy clients</p>
+      </div>
+      <div class="impact-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="impact-icon"><i class="fa-solid fa-users"></i></div>
+        <div><span class="impact-number counter" data-target="28">0</span><span class="impact-suffix">+</span></div>
+        <h3>Expert Team</h3>
+        <p>Dedicated professionals worldwide</p>
+      </div>
+      <div class="impact-card" data-aos="fade-up" data-aos-delay="250">
+        <div class="impact-icon"><i class="fa-solid fa-trophy"></i></div>
+        <div><span class="impact-number counter" data-target="15">0</span><span class="impact-suffix">+</span></div>
+        <h3>Global Awards</h3>
+        <p>Recognized for digital excellence</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process Section -->
+<section id="process" class="process-section">
+  <div class="container">
+    <div class="section-tag" data-aos="fade-up">How We Work</div>
+    <h2 class="section-title" data-aos="fade-up">Our <span class="gradient-text">Process</span></h2>
+    <div class="process-grid">
+      <div class="process-step" data-aos="fade-up" data-aos-delay="100"><div class="step-number">01</div><h3>Discovery</h3><p>Deep dive into your business goals and competitive landscape.</p></div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="200"><div class="step-number">02</div><h3>Strategy</h3><p>Craft a custom data-driven marketing strategy tailored to you.</p></div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="300"><div class="step-number">03</div><h3>Execute</h3><p>Our expert team brings the strategy to life with precision.</p></div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="400"><div class="step-number">04</div><h3>Optimize</h3><p>Continuous monitoring and optimization to maximize ROI.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Section -->
+<section id="pricing" class="pricing-section">
+  <div class="container">
+    <div class="section-tag" data-aos="fade-up">Investment</div>
+    <h2 class="section-title" data-aos="fade-up">Transparent <span class="gradient-text">Pricing</span></h2>
+    <div class="pricing-grid">
+      <div class="pricing-card" data-aos="fade-up" data-aos-delay="100"><h3>Starter</h3><div class="pricing-price">$499<span>/mo</span></div><ul class="pricing-features"><li><i class="fa-solid fa-check"></i> 5-Page Website</li><li><i class="fa-solid fa-check"></i> Basic SEO Setup</li><li><i class="fa-solid fa-check"></i> Social Media (2 platforms)</li><li><i class="fa-solid fa-check"></i> Email Support</li></ul><a href="contact.html#contact-form" class="btn-outline">Get Started</a></div>
+      <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="200"><h3>Professional</h3><div class="pricing-price">$1,299<span>/mo</span></div><ul class="pricing-features"><li><i class="fa-solid fa-check"></i> 15-Page Website</li><li><i class="fa-solid fa-check"></i> Advanced SEO + Link Building</li><li><i class="fa-solid fa-check"></i> Social Media (5 platforms)</li><li><i class="fa-solid fa-check"></i> Priority Support 24/7</li></ul><a href="contact.html#contact-form" class="btn-primary">Get Started</a></div>
+      <div class="pricing-card" data-aos="fade-up" data-aos-delay="300"><h3>Enterprise</h3><div class="pricing-price">Custom</div><ul class="pricing-features"><li><i class="fa-solid fa-check"></i> Unlimited Pages</li><li><i class="fa-solid fa-check"></i> Full SEO Suite</li><li><i class="fa-solid fa-check"></i> Dedicated Account Manager</li><li><i class="fa-solid fa-check"></i> Full Outsourcing Team</li></ul><a href="contact.html#contact-form" class="btn-outline">Contact Sales</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section id="contact" class="cta-section">
+  <div class="container">
+    <div class="hero-badge" style="display: inline-block; margin-bottom: 20px;" data-aos="fade-up">Ready to Grow?</div>
+    <h2 class="section-title" data-aos="fade-up">Let's Build Something <span class="gradient-text">Amazing</span></h2>
+    <p style="max-width: 600px; margin: 0 auto 30px; color: #aaa;" data-aos="fade-up">Join 500+ businesses that have already transformed their digital presence with NexaVision.</p>
+    <a href="contact.html#contact-form" class="btn-primary" data-aos="zoom-in"><i class="fa-solid fa-paper-plane"></i> Start Your Project</a>
+  </div>
+</section>
+
+<!-- Footer with YouTube Icon -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="logo" style="font-size: 1.8rem; display: flex; align-items: center; gap: 4px; font-weight: 600;"><i class="fas fa-cube"></i><span style="color:#ffffff;">Nexa</span><span style="background: linear-gradient(135deg, #8B5CF6, #3B82F6); -webkit-background-clip: text; background-clip: text; color: transparent;">Vision</span></div><p style="margin-top: 20px; color:#aaa;">Transforming businesses through innovative digital marketing strategies since 2016.</p><div class="footer-social"><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a><a href="#" class="ig"><i class="fab fa-instagram"></i></a><a href="#" class="li"><i class="fab fa-linkedin-in"></i></a></div></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Web Development</a></li><li><a href="services.html">Social Media</a></li><li><a href="services.html">SEO Optimization</a></li><li><a href="services.html">Content Writing</a></li><li><a href="services.html">E-commerce Stores</a></li><li><a href="services.html">Support Services</a></li><li><a href="services.html">Outsourcing</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="services.html#process">Process</a></li><li><a href="services.html#pricing">Pricing</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Newsletter</h4><p>Get the latest digital marketing tips.</p><div style="display:flex; margin-top:15px;"><input type="email" id="footerEmail" placeholder="Your email" style="flex:1; padding:12px; background:#0c0f16; border:1px solid #2d2f36; border-radius: 40px 0 0 40px; color:white;"><button id="subscribeBtn" style="background:#8B5CF6; border:none; padding:0 20px; border-radius:0 40px 40px 0; cursor:pointer;"><i class="fa-solid fa-paper-plane"></i></button></div></div>
+    </div>
+   
+</footer>
+<button class="back-to-top" id="backToTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  window.addEventListener('load', () => { const pre = document.getElementById('preloader'); pre.style.opacity = '0'; setTimeout(() => pre.style.display = 'none', 800); });
+  
+  const dot = document.getElementById('cursor-dot'), circle = document.getElementById('cursor-circle');
+  document.addEventListener('mousemove', (e) => { dot.style.transform = `translate(${e.clientX-3}px, ${e.clientY-3}px)`; circle.style.transform = `translate(${e.clientX-16}px, ${e.clientY-16}px)`; });
+  
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { if(window.scrollY > 30) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled'); });
+  
+  const hamburger = document.getElementById('hamburger'), navLinks = document.getElementById('navLinks');
+  hamburger?.addEventListener('click', () => navLinks.classList.toggle('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('active')));
+  
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => backBtn.style.opacity = window.scrollY > 500 ? '1' : '0');
+  backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  
+  AOS.init({ duration: 900, once: true, offset: 100 });
+  
+  // Counter animation
+  const counters = document.querySelectorAll('.counter');
+  const startCounters = () => {
+    counters.forEach(c => {
+      const target = parseInt(c.getAttribute('data-target'));
+      let curr = 0;
+      const inc = target / 50;
+      const upd = () => {
+        curr += inc;
+        if(curr < target) { c.innerText = Math.floor(curr); requestAnimationFrame(upd); }
+        else c.innerText = target;
+      };
+      upd();
+    });
+  };
+  const impactSection = document.querySelector('.impact-section');
+  const obs = new IntersectionObserver((e) => { if(e[0].isIntersecting) { startCounters(); obs.disconnect(); } }, { threshold: 0.5 });
+  if(impactSection) obs.observe(impactSection);
+  
+  document.getElementById('subscribeBtn')?.addEventListener('click', () => { const inp = document.getElementById('footerEmail'); alert(inp.value ? "Thanks for subscribing!" : "Please enter email."); });
+  
+  // GSAP animations
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(".service-card", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, scrollTrigger: { trigger: "#services", start: "top 80%" } });
+  gsap.fromTo(".process-step", { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, stagger: 0.15, scrollTrigger: { trigger: "#process", start: "top 80%" } });
+  gsap.fromTo(".impact-card", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, scrollTrigger: { trigger: ".impact-section", start: "top 80%" } });
+</script>
+</body>
+</html>

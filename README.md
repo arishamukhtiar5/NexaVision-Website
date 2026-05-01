@@ -1,5 +1,5 @@
 # NexaVision 🌐
-
+- 🌐 Live Site – [Visit Site](https://arishamukhtiar5.github.io/NexaVision-Website/)
 NexaVision is a modern, responsive digital agency website built to showcase creative services, projects, and professional online presence.
 
 ## 🚀 Features
@@ -10,7 +10,7 @@ NexaVision is a modern, responsive digital agency website built to showcase crea
 
 ## 📄 Pages
 - Home (Index)
-- About – https://arishamukhtiar5.github.io/NexaVision-Website/about.html
+- About –
 - Services
 - Portfolio
 - Contact
